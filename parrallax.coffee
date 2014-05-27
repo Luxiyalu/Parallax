@@ -3,8 +3,6 @@ do (TweenMax, window, document) ->
     # startingpoint must be 0
     @element = element
     @keyframes = keyframes
-    @currentIndex = 0
-    @currentPosition = 0
     do @compileTweens
     return
     
@@ -20,13 +18,12 @@ do (TweenMax, window, document) ->
       @tweens.push tween.pause()
       
   Parallax::seek = (ratio) ->
-    prevIndex = @getIndex(@ratio)
+    prevIndex = @index || @getIndex(@ratio)
     currentIndex = @getIndex(ratio)
      
     # forward
     if !@ratio || @ratio < ratio
       for i in [prevIndex...currentIndex]
-        console.log i
         tween = @tweens[i]
         duration = tween.duration()
         tween.seek(duration).pause()
@@ -34,7 +31,6 @@ do (TweenMax, window, document) ->
     # backward
     else
       for i in [prevIndex...currentIndex]
-        console.log i
         tween = @tweens[i]
         tween.seek(0).pause()
         
@@ -42,8 +38,9 @@ do (TweenMax, window, document) ->
     span = @getSpan(ratio)
     @tweens[currentIndex].seek(span).pause()
     
-    # store the ratio for comparison next time
+    # store ratio for comparison next time
     @ratio = ratio
+    @index = currentIndex
     
   Parallax::getSpan = (ratio) ->
     # calculate the specific time of the current span of tween

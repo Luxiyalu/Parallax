@@ -5,8 +5,6 @@
     Parallax = function(element, keyframes) {
       this.element = element;
       this.keyframes = keyframes;
-      this.currentIndex = 0;
-      this.currentPosition = 0;
       this.compileTweens();
     };
     Parallax.prototype.compileTweens = function() {
@@ -25,25 +23,24 @@
     };
     Parallax.prototype.seek = function(ratio) {
       var currentIndex, duration, i, prevIndex, span, tween, _i, _j;
-      prevIndex = this.getIndex(this.ratio);
+      prevIndex = this.index || this.getIndex(this.ratio);
       currentIndex = this.getIndex(ratio);
       if (!this.ratio || this.ratio < ratio) {
         for (i = _i = prevIndex; prevIndex <= currentIndex ? _i < currentIndex : _i > currentIndex; i = prevIndex <= currentIndex ? ++_i : --_i) {
-          console.log(i);
           tween = this.tweens[i];
           duration = tween.duration();
           tween.seek(duration).pause();
         }
       } else {
         for (i = _j = prevIndex; prevIndex <= currentIndex ? _j < currentIndex : _j > currentIndex; i = prevIndex <= currentIndex ? ++_j : --_j) {
-          console.log(i);
           tween = this.tweens[i];
           tween.seek(0).pause();
         }
       }
       span = this.getSpan(ratio);
       this.tweens[currentIndex].seek(span).pause();
-      return this.ratio = ratio;
+      this.ratio = ratio;
+      return this.index = currentIndex;
     };
     Parallax.prototype.getSpan = function(ratio) {
       var currentTween, span;
