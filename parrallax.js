@@ -2,11 +2,16 @@
 (function() {
   (function(TweenMax, window, document) {
     var Parallax;
-    Parallax = function(element, keyframes) {
-      this.element = element;
-      this.keyframes = keyframes;
-      this.compileTweens();
-    };
+    Parallax = (function() {
+      function Parallax(element, keyframes) {
+        this.element = element;
+        this.keyframes = keyframes;
+        this.compileTweens();
+      }
+
+      return Parallax;
+
+    })();
     Parallax.prototype.compileTweens = function() {
       var dt, i, li, tween, _i, _ref, _results;
       this.tweens = [];

@@ -1,11 +1,9 @@
 do (TweenMax, window, document) ->
-  Parallax = (element, keyframes) ->
+  class Parallax
     # startingpoint must be 0
-    @element = element
-    @keyframes = keyframes
-    do @compileTweens
-    return
-    
+    constructor: (@element, @keyframes) ->
+      do @compileTweens
+      
   Parallax::compileTweens = ->
     @tweens = []
     

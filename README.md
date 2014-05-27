@@ -21,6 +21,5 @@ define ['jquery', 'parallax'], ($) ->
   h = $('html').height() - $(window).height()
   $(document).on 'scroll', ->
     ratio = scrollY / h
-    
     parallax.seek(ratio)
 ```
