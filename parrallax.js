@@ -23,6 +23,8 @@
     };
     Parallax.prototype.seek = function(ratio) {
       var currentIndex, duration, i, prevIndex, span, tween, _i, _j;
+      ratio = Math.max(ratio, 0);
+      ratio = Math.min(ratio, 1);
       prevIndex = this.index || this.getIndex(this.ratio);
       currentIndex = this.getIndex(ratio);
       if (!this.ratio || this.ratio < ratio) {

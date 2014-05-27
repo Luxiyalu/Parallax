@@ -18,6 +18,10 @@ do (TweenMax, window, document) ->
       @tweens.push tween.pause()
       
   Parallax::seek = (ratio) ->
+    # get ratio within range of 0~1
+    ratio = Math.max(ratio, 0)
+    ratio = Math.min(ratio, 1)
+    
     prevIndex = @index || @getIndex(@ratio)
     currentIndex = @getIndex(ratio)
      
