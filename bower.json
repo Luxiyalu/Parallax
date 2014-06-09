@@ -1,0 +1,7 @@
+{
+  "name": "Parallaxing",
+  "version": "0.1.0",
+  "dependencies": {
+    "greensock-js": "latest"
+  }
+}
