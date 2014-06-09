@@ -23,3 +23,8 @@ define ['jquery', 'parallax'], ($) ->
     ratio = scrollY / h
     parallax.seek(ratio)
 ```
+
+###### Install with:
+```
+bower install greensock-parallax
+```
