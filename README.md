@@ -5,26 +5,29 @@ Provides parallax effect given a ratio (0-1). Based upon TweenMax.
 
 ### Code Example
 
-```coffeescript
-define ['jquery', 'parallax'], ($) ->
-  # create an object
-  keyframes = []
-  keyframes.push ratio: 0, frame: {}
-  keyframes.push ratio: .2, frame: {x: $(window).width() - $('.obj').width(), backgroundColor: 'green'}
-  keyframes.push ratio: .4, frame: {y: $(window).height() - $('.obj').height(), backgroundColor: 'blue'}
-  keyframes.push ratio: .6, frame: {x: 0, backgroundColor: 'red'}
-  keyframes.push ratio: 1, frame: {y: 0, backgroundColor: 'black'}
+```javascript
+  // Create an array of keyframes, be sure to include frame ratio: 0 and ratio: 1
+  // x, y, opacity, backgroundColor... anything that could be tweened through TweenMax could be tweened.
+  // Easing could be added between frames.
+  var keyframes = [
+    {ratio: 0, frame: {}},
+    {ratio: 0.5, frame: {x: 300}},
+    {ratio: 1, frame: {y: 300, ease: Power3.easeOut}}
+  ];
   
-  # create the tweens according to ratio
-  parallax = new Parallax($('.obj'), keyframes)
+  // create parallax according to keyframes
+  var parallax = new Parallax($('.obj'), keyframes);
+  
+  $(document).on('scroll', function() {
+    // provide a ratio, to seek to the point
+    var ratio = scrollY / $(window).height();
     
-  h = $('html').height() - $(window).height()
-  $(document).on 'scroll', ->
-    ratio = scrollY / h
-    parallax.seek(ratio)
+    // seek to the point according to ratio
+    parallax.seek(ratio);
+  };
 ```
 
-###### Install with:
+##### Install with:
 ```
 bower install greensock-parallax
 ```
