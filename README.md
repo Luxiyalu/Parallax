@@ -31,3 +31,5 @@ Provides parallax effect given a ratio (0-1). Based upon TweenMax.
 ```
 bower install greensock-parallax
 ```
+
+##### Link for demo repo: [link](https://github.com/Luxiyalu/parallax-demo).
