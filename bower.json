@@ -1,5 +1,5 @@
 {
-  "name": "Parallaxing",
+  "name": "greensock-parallax",
   "version": "0.1.0",
   "dependencies": {
     "greensock-js": "latest"
