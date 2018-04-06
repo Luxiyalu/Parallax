@@ -29,7 +29,7 @@ Provides parallax effect given a ratio (0-1). Based upon TweenMax.
 
 ##### Install with:
 ```
-bower install greensock-parallax
+yarn add greensock-parallax
 ```
 
 ##### Link for demo repo: [link](https://github.com/Luxiyalu/parallax-demo).
