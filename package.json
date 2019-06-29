@@ -1,7 +1,14 @@
 {
-  "name": "greensock-parallax",
-  "version": "0.1.0",
+  "name": "gsap-parallax",
+  "version": "3.0.0",
+  "description": "Creates parallax effect given a ratio (0-1). Based upon TweenMax.",
+  "main": "parallax.js",
+  "repository": "https://github.com/Luxiyalu/Parallax",
+  "author": "Lucia Lu <doitelu@gmail.com>",
+  "license": "MIT",
+  "private": false,
   "dependencies": {
-    "greensock-js": "latest"
+    "gsap": "latest",
+    "jquery": "latest"
   }
 }
